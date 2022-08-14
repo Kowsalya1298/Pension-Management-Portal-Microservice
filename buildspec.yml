@@ -1,51 +1,44 @@
 version: 0.2
 
 phases:
+  pre_build:
+    commands:
+       - echo Logging in to Amazon ECR...
 
-pre_build:
+       - aws --version
 
-commands:
+       - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin 641171196169.dkr.ecr.us-west-2.amazonaws.com
 
-- echo Logging in to Amazon ECR...
+       - REPOSITORY_URI=641171196169.dkr.ecr.us-west-2.amazonaws.com/portal
 
-- aws --version
+       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
 
-- aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin 641171196169.dkr.ecr.us-west-2.amazonaws.com
+       - IMAGE_TAG=${COMMIT_HASH:=latest}
 
-- REPOSITORY_URI=641171196169.dkr.ecr.us-west-2.amazonaws.com/portal
+  build:
+    commands:
+       - echo Build started on `date`
 
-- COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+       - echo maven clean build 
 
-- IMAGE_TAG=${COMMIT_HASH:=latest}
+       - mvn package
 
-build:
+       - echo Building the Docker image...
 
-commands:
+       - docker build -t $REPOSITORY_URI:latest .
 
-- echo Build started on `date`
+       - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
 
-- echo maven clean build 
+  post_build:
+    commands:
+       - echo Build completed on `date`
 
-- mvn package
+       - echo Pushing the Docker images...
 
-- echo Building the Docker image...
+       - docker push $REPOSITORY_URI:latest
 
-- docker build -t $REPOSITORY_URI:latest .
-
-- docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
-
-post_build:
-
-commands:
-
-- echo Build completed on `date`
-
-- echo Pushing the Docker images...
-
-- docker push $REPOSITORY_URI:latest
-
-- docker push $REPOSITORY_URI:$IMAGE_TAG
+       - docker push $REPOSITORY_URI:$IMAGE_TAG
 
 artifacts:
- files: 
-   - target/aws-build-sample-maven-project-0.0.1-SNAPSHOT.jar
+  files: 
+       - target/aws-build-sample-maven-project-0.0.1-SNAPSHOT.jar
