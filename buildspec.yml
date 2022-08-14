@@ -47,5 +47,5 @@ commands:
 - docker push $REPOSITORY_URI:$IMAGE_TAG
 
 artifacts:
-files: 
-- target/aws-build-sample-maven-project-0.0.1-SNAPSHOT.jar
+ files: 
+   - target/aws-build-sample-maven-project-0.0.1-SNAPSHOT.jar
