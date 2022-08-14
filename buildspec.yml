@@ -38,7 +38,3 @@ phases:
        - docker push $REPOSITORY_URI:latest
 
        - docker push $REPOSITORY_URI:$IMAGE_TAG
-
-artifacts:
-  files: 
-       - target/aws-build-sample-maven-project-0.0.1-SNAPSHOT.jar
