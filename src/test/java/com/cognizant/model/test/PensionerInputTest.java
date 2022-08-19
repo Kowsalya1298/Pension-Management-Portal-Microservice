@@ -26,30 +26,23 @@ public class PensionerInputTest {
 	
 	@Test
 	void allArgsConstructorTest() {
-		PensionerInput pensionerInput1 = new PensionerInput("Pratyush", "06-11-1999", "ILPWW1234X", "12423543625625", "family") ;
+		PensionerInput pensionerInput1 = new PensionerInput("12423543625625") ;
 		assertNotNull(pensionerInput1) ;
 	}	
 	
 	@Test
 	void getterTest() {
 		PensionerInput pensionerInput1 = new PensionerInput() ;
-		pensionerInput1.setName("Pratyush");
-		pensionerInput1.setDateOfBirth("11-12-2000");
-		pensionerInput1.setPanNumber("INFEOG2124");
 		pensionerInput1.setAadhaarNumber("1342353463565");
-		pensionerInput1.setPensionType("family");
 		
 		assertNotNull(pensionerInput1) ;
 	}
 	
 	@Test
 	void allGettersTest() {
-		PensionerInput pensionerInput1 = new PensionerInput("Pratyush", "06-11-1999", "ILPWW1234X", "12423543625625", "family") ;
-		assertEquals("Pratyush", pensionerInput1.getName()) ; 
-		assertEquals("06-11-1999", pensionerInput1.getDateOfBirth()) ; 
-		assertEquals("ILPWW1234X", pensionerInput1.getPanNumber()) ; 
+		PensionerInput pensionerInput1 = new PensionerInput( "12423543625625") ;
+		
 		assertEquals("12423543625625", pensionerInput1.getAadhaarNumber()) ; 
-		assertEquals("family", pensionerInput1.getPensionType()) ; 
 	}	
 
 }

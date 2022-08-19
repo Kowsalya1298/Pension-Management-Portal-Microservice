@@ -91,8 +91,24 @@ public class PensionController {
 
 	// calculating pension details for input pensioner details with pensioner micro
 	// service
-	@PostMapping("/pensionDetail")
-	public ResponseEntity<PensionDetail> getPensionDetail(@RequestHeader(name = "Authorization") String token,
+//	@PostMapping("/pensionDetail")
+//	public ResponseEntity<PensionDetail> getPensionDetail(@RequestHeader(name = "Authorization") String token,
+//			@RequestBody PensionerInput pensionerInput) {
+//		LOGGER.info("STARTED - getPensionDetail");
+//		try {
+//			authorizationClient.authorization(token);
+//		} catch (Exception e) {
+//			LOGGER.error("EXCEPTION - getPensionDetail");
+//			throw new ResourceNotFoundException("enter a valid token");
+//		}
+//		PensionDetail pensionDetail = processPensionClient.getPensionDetail(token, pensionerInput);
+//		LOGGER.info("END - getPensionDetail");
+//		return ResponseEntity.ok(pensionDetail);
+//
+//	}
+	
+	@PostMapping("/calculatePension")
+	public ResponseEntity<PensionDetail> getPensionerDetail(@RequestHeader(name = "Authorization") String token,
 			@RequestBody PensionerInput pensionerInput) {
 		LOGGER.info("STARTED - getPensionDetail");
 		try {
@@ -109,18 +125,18 @@ public class PensionController {
 
 	// return Success or failure code based on given pension disburse input
 	// providing with pension disbursement micro service
-	@PostMapping("/processPension")
-	public ProcessPensionResponse getStatusCode(@RequestHeader(name = "Authorization") String token,
-			@RequestBody ProcessPensionInput processPensionInput) {
-		LOGGER.info("STARTED - getStatusCode");
-		try {
-			authorizationClient.authorization(token);
-		} catch (Exception e) {
-			LOGGER.error("EXCEPTION - getStatusCode");
-			throw new ResourceNotFoundException("enter a valid token");
-		}
-		LOGGER.info("END - getStatusCode");
-		return pensionDisbursementClient.getPensionDisbursement(token, processPensionInput);
-	}
+//	@PostMapping("/processPension")
+//	public ProcessPensionResponse getStatusCode(@RequestHeader(name = "Authorization") String token,
+//			@RequestBody ProcessPensionInput processPensionInput) {
+//		LOGGER.info("STARTED - getStatusCode");
+//		try {
+//			authorizationClient.authorization(token);
+//		} catch (Exception e) {
+//			LOGGER.error("EXCEPTION - getStatusCode");
+//			throw new ResourceNotFoundException("enter a valid token");
+//		}
+//		LOGGER.info("END - getStatusCode");
+//		return pensionDisbursementClient.getPensionDisbursement(token, processPensionInput);
+//	}
 
 }

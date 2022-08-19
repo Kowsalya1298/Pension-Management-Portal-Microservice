@@ -15,7 +15,7 @@ import com.cognizant.model.PensionerInput;
 @FeignClient(name = "ProcessPensionService", url="http://localhost:9084")
 public interface ProcessPensionClient {
 	
-	@PostMapping("/pensionerInput")
+	@PostMapping("/processPension")
 	public PensionDetail getPensionDetail(@RequestHeader(name = "Authorization") String token, @RequestBody PensionerInput pensionerInput);
 
 	@GetMapping("/details")

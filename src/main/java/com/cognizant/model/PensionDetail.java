@@ -12,10 +12,8 @@ import lombok.Setter;
 public class PensionDetail {
 	
 	private String name;
-	private String dateOfBirth;
-	private String panNumber;
-	private String pensiontype;
 	private double pensionAmount;
+	private double bankServiceCharge;
 	
 
 }

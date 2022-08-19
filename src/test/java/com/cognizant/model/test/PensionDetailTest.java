@@ -21,7 +21,7 @@ public class PensionDetailTest {
 	@Test
 	void AllArgsPensionDetailTest()
 	{
-		PensionDetail pensionDetail=new PensionDetail("Professor","06-11-1999" , "PIYTH7890L", "family", 52131.0);
+		PensionDetail pensionDetail=new PensionDetail("Professor", 52131.0,550.00);
 		assertThat(assertThat(pensionDetail).isNotNull());
 	}
 	
@@ -30,9 +30,6 @@ public class PensionDetailTest {
 	{
 		PensionDetail pensionDetail=new PensionDetail() ;
 		pensionDetail.setName("Nairobi");
-		pensionDetail.setDateOfBirth("11-5-1990");
-		pensionDetail.setPanNumber("ILUPWS2341C");
-		pensionDetail.setPensiontype("family");
 		pensionDetail.setPensionAmount(40000);
 		assertThat(assertThat(pensionDetail).isNotNull());
 	}
@@ -40,16 +37,10 @@ public class PensionDetailTest {
 	@Test
 	void AllGetterPensionDetailTest()
 	{
-		PensionDetail pensionDetail=new PensionDetail("Professor","06-11-1999" , "PIYTH7890L", "family", 52131.0);
+		PensionDetail pensionDetail=new PensionDetail("Professor", 52131.0,500.0);
 		String name = pensionDetail.getName() ;
-		String dob = pensionDetail.getDateOfBirth() ;
-		String pn = pensionDetail.getPanNumber() ;
-		String pt = pensionDetail.getPensiontype();
 		Double pa = pensionDetail.getPensionAmount() ;
 		assertEquals("Professor", name) ;
-		assertEquals("06-11-1999", dob) ;
-		assertEquals("PIYTH7890L", pn) ;
-		assertEquals("family", pt) ;
 		assertEquals(52131.0, pa) ;
 	}
 	
