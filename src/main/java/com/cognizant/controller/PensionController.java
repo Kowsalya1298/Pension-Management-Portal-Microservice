@@ -5,6 +5,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,107 +28,118 @@ import com.cognizant.restClient.ProcessPensionClient;
 @CrossOrigin(origins = "*")
 public class PensionController {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(PensionController.class);
-	@Autowired
-	private AuthorizationClient authorizationClient;
-	@Autowired
-	private ProcessPensionClient processPensionClient;
+    private static final Logger LOGGER = LoggerFactory.getLogger(PensionController.class);
+    @Autowired
+    private AuthorizationClient authorizationClient;
+    @Autowired
+    private ProcessPensionClient processPensionClient;
 
-	// starting message
-	@GetMapping("/")
-	public String display() {
-		return "Pension management working";
+    // starting message
+    @GetMapping("/")
+    public String display() {
+	return "Pension management working";
+    }
+
+    // Validating login credentials and generate token if valid
+
+    @PostMapping("/token")
+    public ResponseEntity<?> doLogin(@RequestBody AuthRequest authRequest) {
+	LOGGER.info("STARTED - doLogin");
+	String token = null;
+	try {
+	    token = authorizationClient.generateToken(authRequest);
+	    LOGGER.info("GENERATED - Token - " + token.toString());
+	} catch (Exception e) {
+	    LOGGER.error("EXCEPTION - doLogin");
+	    throw new ResourceNotFoundException("Token can't be generated");
 	}
 
-	// validating token with authorization microservice
+	System.out.println(token);
+	LOGGER.debug(token);
 
-	@PostMapping("/token")
-	public ResponseEntity<?> doLogin(@RequestBody AuthRequest authRequest) {
-		LOGGER.info("STARTED - doLogin");
-		String token = null;
+	LOGGER.info("END - doLogin");
+	return ResponseEntity.ok(new Token(token));
+    }
+
+    // Register new user
+    @PostMapping("/register")
+    public ResponseEntity<User> registerNewUser(@RequestBody User user) {
+	LOGGER.info("STARTED - Registration");
+	User userDetails = null;
+	try {
+	    userDetails = authorizationClient.register(user);
+
+	} catch (Exception e) {
+	    LOGGER.error("EXCEPTION - Registration");
+	    throw new ResourceNotFoundException("User not created");
+	}
+	LOGGER.info("END - Registration");
+	return new ResponseEntity<>(userDetails, HttpStatus.CREATED);
+    }
+
+    // getting all pensioners details from pensioner details micro service
+
+    @GetMapping("/details")
+    public ResponseEntity<?> allDetail(@RequestHeader(name = "Authorization") String token) {
+	LOGGER.info("STARTED - allDetail");
+	List<PensionerDetail> pensionerDetail = null;
+	if (token != null) {
+	    if (authorizationClient.authorization(token)) {
 		try {
-			token = authorizationClient.generateToken(authRequest);
+		    pensionerDetail = processPensionClient.allDetail();
 
 		} catch (Exception e) {
-			LOGGER.error("EXCEPTION - doLogin");
-			throw new ResourceNotFoundException("token can't be generated");
+		    new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		    throw new ResourceNotFoundException("Pensioner details list not found");
 		}
+	    } else {
+		new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+	    }
 
-		System.out.println(token);
-		LOGGER.debug(token);
-
-		LOGGER.info("END - doLogin");
-		return ResponseEntity.ok(new Token(token));
+	} else {
+	    new ResponseEntity<>(HttpStatus.FORBIDDEN);
 	}
-	
-	// Register new user
-	@PostMapping("/register")
-	public ResponseEntity<User> registerNewUser(@RequestBody User user) {
-		LOGGER.info("STARTED - Registration");
-		User userDetails = null;
-		try {
-			userDetails = authorizationClient.register(user);
+	LOGGER.info("END - allDetail");
+	return new ResponseEntity<>(pensionerDetail, HttpStatus.OK);
 
-		} catch (Exception e) {
-			LOGGER.error("EXCEPTION - doLogin");
-			throw new ResourceNotFoundException("token can't be generated");
-		}
+    }
 
-		System.out.println(userDetails);
-		LOGGER.debug(userDetails.toString());
-
-		LOGGER.info("END - doLogin");
-		return ResponseEntity.ok(userDetails);
-	}
-
-	// getting pensioner details from pensioner details micro service
-
-	@GetMapping("/details")
-	public List<PensionerDetail> allDetail() {
-		LOGGER.info("STARTED - allDetail");
-		List<PensionerDetail> pensionerDetail = null;
-		try {
-			pensionerDetail = processPensionClient.allDetail();
-		} catch (Exception e) {
-			throw new ResourceNotFoundException("pensioner detail list not found");
-		}
-		LOGGER.info("END - allDetail");
-		return pensionerDetail;
-
+    // Get details of a pensioner using aadhar number
+    @PostMapping("/pensionerDetail")
+    public ResponseEntity<PensionerDetail> getPensionDetail(@RequestHeader(name = "Authorization") String token,
+	    @RequestBody PensionerInput pensionerInput) {
+	LOGGER.info("STARTED - getPensionDetail");
+	PensionerDetail pensionerDetail = null;
+	if (authorizationClient.authorization(token)) {
+	    try {
+		pensionerDetail = processPensionClient.getPensionerDetail(pensionerInput);
+	    } catch (Exception e) {
+		throw new ResourceNotFoundException("Pensioner details list not found");
+	    }
+	} else {
+	    new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 	}
 
-	// calculating pension details for input pensioner details with pensioner micro
-	// service
-	@PostMapping("/pensionerDetail")
-	public ResponseEntity<PensionerDetail> getPensionDetail(@RequestHeader(name = "Authorization") String token,
-			@RequestBody PensionerInput pensionerInput) {
-		LOGGER.info("STARTED - getPensionDetail");
-		try {
-			authorizationClient.authorization(token);
-		} catch (Exception e) {
-			LOGGER.error("EXCEPTION - getPensionDetail");
-			throw new ResourceNotFoundException("enter a valid token");
-		}
-		PensionerDetail pensionerDetail = processPensionClient.getPensionerDetail(pensionerInput);
-		LOGGER.info("END - getPensionDetail");
-		return ResponseEntity.ok(pensionerDetail);
+	LOGGER.info("END - getPensionDetail");
+	return new ResponseEntity<>(pensionerDetail, HttpStatus.OK);
+    }
 
+    
+    //Calculate pension using aadhar number
+    @PostMapping("/calculatePension")
+    public ResponseEntity<PensionDetail> getPensionerDetail(@RequestHeader(name = "Authorization") String token,
+	    @RequestBody PensionerInput pensionerInput) {
+	LOGGER.info("STARTED - getPensionDetail");
+	try {
+	    authorizationClient.authorization(token);
+	} catch (Exception e) {
+	    LOGGER.error("EXCEPTION - getPensionDetail");
+	    throw new ResourceNotFoundException("enter a valid token");
 	}
+	PensionDetail pensionDetail = processPensionClient.getPensionDetail(token, pensionerInput);
+	LOGGER.info("END - getPensionDetail");
+	return ResponseEntity.ok(pensionDetail);
 
-	@PostMapping("/calculatePension")
-	public ResponseEntity<PensionDetail> getPensionerDetail(@RequestHeader(name = "Authorization") String token,
-			@RequestBody PensionerInput pensionerInput) {
-		LOGGER.info("STARTED - getPensionDetail");
-		try {
-			authorizationClient.authorization(token);
-		} catch (Exception e) {
-			LOGGER.error("EXCEPTION - getPensionDetail");
-			throw new ResourceNotFoundException("enter a valid token");
-		}
-		PensionDetail pensionDetail = processPensionClient.getPensionDetail(token, pensionerInput);
-		LOGGER.info("END - getPensionDetail");
-		return ResponseEntity.ok(pensionDetail);
-
-	}
+    }
 
 }
