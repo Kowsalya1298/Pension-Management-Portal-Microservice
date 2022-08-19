@@ -20,4 +20,7 @@ public interface ProcessPensionClient {
 
 	@GetMapping("/details")
 	public List<PensionerDetail> allDetail();
+	
+	@PostMapping("/pensionerDetail")
+	public PensionerDetail getPensionerDetail(@RequestBody PensionerInput pensionerInput);
 }

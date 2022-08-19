@@ -7,12 +7,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 
 import com.cognizant.model.AuthRequest;
+import com.cognizant.model.User;
 
 @FeignClient(name = "authorizationService",url = "http://localhost:9090")
 public interface AuthorizationClient {
 	
 	@PostMapping("/authenticate")
 	public String generateToken(@RequestBody AuthRequest authRequest) throws Exception; 
+	
+	@PostMapping("/register")
+	public User register(@RequestBody User user) throws Exception; 
+
 
 	@GetMapping("/authorize")
 	public Boolean authorization(@RequestHeader("Authorization") String token);
