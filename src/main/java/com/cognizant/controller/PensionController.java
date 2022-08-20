@@ -90,7 +90,7 @@ public class PensionController {
 
 		} catch (Exception e) {
 		    new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		    throw new ResourceNotFoundException("Pensioner details list not found");
+		    throw new ResourceNotFoundException("Pensioner details not found");
 		}
 	    } else {
 		new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
@@ -129,14 +129,25 @@ public class PensionController {
     @PostMapping("/calculatePension")
     public ResponseEntity<PensionDetail> getPensionerDetail(@RequestHeader(name = "Authorization") String token,
 	    @RequestBody PensionerInput pensionerInput) {
+	PensionDetail pensionDetail = null;
 	LOGGER.info("STARTED - getPensionDetail");
-	try {
-	    authorizationClient.authorization(token);
-	} catch (Exception e) {
-	    LOGGER.error("EXCEPTION - getPensionDetail");
-	    throw new ResourceNotFoundException("enter a valid token");
+//	try {
+//	    authorizationClient.authorization(token);
+//	} catch (Exception e) {
+//	    LOGGER.error("EXCEPTION - getPensionDetail");
+//	    throw new ResourceNotFoundException("enter a valid token");
+//	}
+	if(authorizationClient.authorization(token)) {
+	    try {
+		pensionDetail = processPensionClient.getPensionDetail(token, pensionerInput);
+	    }
+	    catch (Exception e) {
+		    LOGGER.error("EXCEPTION - getPensionDetail");
+		    new ResponseEntity<>("Aadhar Number not found",HttpStatus.NOT_FOUND);
+		    throw new ResourceNotFoundException("Aadhar Number not found");
+		}
 	}
-	PensionDetail pensionDetail = processPensionClient.getPensionDetail(token, pensionerInput);
+//	PensionDetail pensionDetail = processPensionClient.getPensionDetail(token, pensionerInput);
 	LOGGER.info("END - getPensionDetail");
 	return ResponseEntity.ok(pensionDetail);
 
