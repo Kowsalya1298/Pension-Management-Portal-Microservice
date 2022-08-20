@@ -262,3 +262,16 @@
 2022-08-20 14:57:08.767  INFO [,,] 3216 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
 2022-08-20 14:57:08.826  WARN [,,] 3216 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
 2022-08-20 14:57:09.009  WARN [,,] 3216 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-08-20 14:57:12.341  INFO [,,] 3216 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9085 (http) with context path ''
+2022-08-20 14:57:14.520  INFO [,,] 3216 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2022-08-20 14:57:14.523  INFO [,,] 3216 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2022-08-20 14:57:14.540  INFO [,,] 3216 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2022-08-20 14:57:14.746  INFO [,,] 3216 --- [restartedMain] c.c.PensionManagementPortalApplication   : Started PensionManagementPortalApplication in 9.897 seconds (JVM running for 14974.746)
+2022-08-20 14:57:14.754  INFO [,,] 3216 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-08-20 14:58:35.565  INFO [,,] 3216 --- [http-nio-9085-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-20 14:58:35.567  INFO [,,] 3216 --- [http-nio-9085-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-08-20 14:58:35.569  INFO [,,] 3216 --- [http-nio-9085-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2022-08-20 14:58:35.589  INFO [,96b9ec75182f3642,96b9ec75182f3642] 3216 --- [http-nio-9085-exec-1] c.c.controller.PensionController         : STARTED - getPensionDetail
+2022-08-20 14:58:35.644  WARN [,96b9ec75182f3642,96b9ec75182f3642] 3216 --- [http-nio-9085-exec-1] .w.s.m.a.ResponseStatusExceptionResolver : Resolved [com.cognizant.exception.ResourceNotFoundException: Pensioner details not found]
+2022-08-20 14:58:35.699  INFO [,618d47444b430e1a,618d47444b430e1a] 3216 --- [http-nio-9085-exec-2] c.c.controller.PensionController         : STARTED - getPensionDetail
+2022-08-20 14:58:35.740  WARN [,618d47444b430e1a,618d47444b430e1a] 3216 --- [http-nio-9085-exec-2] .w.s.m.a.ResponseStatusExceptionResolver : Resolved [com.cognizant.exception.ResourceNotFoundException: Pensioner details not found]
