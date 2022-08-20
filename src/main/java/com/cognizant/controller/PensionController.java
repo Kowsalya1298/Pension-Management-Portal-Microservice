@@ -90,7 +90,7 @@ public class PensionController {
 
 		} catch (Exception e) {
 		    new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		    throw new ResourceNotFoundException("Pensioner details not found");
+		    throw new ResourceNotFoundException("Pensioner details list not found");
 		}
 	    } else {
 		new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
@@ -114,7 +114,7 @@ public class PensionController {
 	    try {
 		pensionerDetail = processPensionClient.getPensionerDetail(pensionerInput);
 	    } catch (Exception e) {
-		throw new ResourceNotFoundException("Pensioner details list not found");
+		throw new ResourceNotFoundException("Pensioner details not found");
 	    }
 	} else {
 	    new ResponseEntity<>(HttpStatus.UNAUTHORIZED);

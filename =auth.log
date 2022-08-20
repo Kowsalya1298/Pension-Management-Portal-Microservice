@@ -159,3 +159,106 @@
 2022-08-20 11:03:32.994  INFO [,,] 3216 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
 2022-08-20 11:03:33.078  INFO [,,] 3216 --- [restartedMain] c.c.PensionManagementPortalApplication   : Started PensionManagementPortalApplication in 7.237 seconds (JVM running for 953.078)
 2022-08-20 11:03:33.083  INFO [,,] 3216 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-08-20 14:45:56.493  INFO [,7eb8f45ba2622613,7eb8f45ba2622613] 3216 --- [http-nio-9085-exec-6] c.c.controller.PensionController         : STARTED - getPensionDetail
+2022-08-20 14:45:56.621  WARN [,7eb8f45ba2622613,7eb8f45ba2622613] 3216 --- [http-nio-9085-exec-6] .w.s.m.a.ResponseStatusExceptionResolver : Resolved [com.cognizant.exception.ResourceNotFoundException: Pensioner details list not found]
+2022-08-20 14:45:56.725  INFO [,07db890acf2e782a,07db890acf2e782a] 3216 --- [http-nio-9085-exec-7] c.c.controller.PensionController         : STARTED - getPensionDetail
+2022-08-20 14:45:56.821  WARN [,07db890acf2e782a,07db890acf2e782a] 3216 --- [http-nio-9085-exec-7] .w.s.m.a.ResponseStatusExceptionResolver : Resolved [com.cognizant.exception.ResourceNotFoundException: Pensioner details list not found]
+2022-08-20 14:46:25.686  INFO [,a1403c5000c70d93,a1403c5000c70d93] 3216 --- [http-nio-9085-exec-8] c.c.controller.PensionController         : STARTED - getPensionDetail
+2022-08-20 14:46:25.782  WARN [,a1403c5000c70d93,a1403c5000c70d93] 3216 --- [http-nio-9085-exec-8] .w.s.m.a.ResponseStatusExceptionResolver : Resolved [com.cognizant.exception.ResourceNotFoundException: Pensioner details list not found]
+2022-08-20 14:46:25.884  INFO [,685d65fd7ca7fdeb,685d65fd7ca7fdeb] 3216 --- [http-nio-9085-exec-9] c.c.controller.PensionController         : STARTED - getPensionDetail
+2022-08-20 14:46:25.999  WARN [,685d65fd7ca7fdeb,685d65fd7ca7fdeb] 3216 --- [http-nio-9085-exec-9] .w.s.m.a.ResponseStatusExceptionResolver : Resolved [com.cognizant.exception.ResourceNotFoundException: Pensioner details list not found]
+2022-08-20 14:47:16.836  INFO [,c084edb7595ecb1c,c084edb7595ecb1c] 3216 --- [http-nio-9085-exec-1] c.c.controller.PensionController         : STARTED - doLogin
+2022-08-20 14:47:16.912 ERROR [,c084edb7595ecb1c,c084edb7595ecb1c] 3216 --- [http-nio-9085-exec-1] c.c.controller.PensionController         : EXCEPTION - doLogin
+2022-08-20 14:47:16.914  WARN [,c084edb7595ecb1c,c084edb7595ecb1c] 3216 --- [http-nio-9085-exec-1] .w.s.m.a.ResponseStatusExceptionResolver : Resolved [com.cognizant.exception.ResourceNotFoundException: Token can't be generated]
+2022-08-20 14:47:17.013  INFO [,35ea57c60fcdb749,35ea57c60fcdb749] 3216 --- [http-nio-9085-exec-2] c.c.controller.PensionController         : STARTED - doLogin
+2022-08-20 14:47:17.039 ERROR [,35ea57c60fcdb749,35ea57c60fcdb749] 3216 --- [http-nio-9085-exec-2] c.c.controller.PensionController         : EXCEPTION - doLogin
+2022-08-20 14:47:17.041  WARN [,35ea57c60fcdb749,35ea57c60fcdb749] 3216 --- [http-nio-9085-exec-2] .w.s.m.a.ResponseStatusExceptionResolver : Resolved [com.cognizant.exception.ResourceNotFoundException: Token can't be generated]
+2022-08-20 14:47:18.851  INFO [,c9e2993111894dc0,c9e2993111894dc0] 3216 --- [http-nio-9085-exec-4] c.c.controller.PensionController         : STARTED - doLogin
+2022-08-20 14:47:18.889 ERROR [,c9e2993111894dc0,c9e2993111894dc0] 3216 --- [http-nio-9085-exec-4] c.c.controller.PensionController         : EXCEPTION - doLogin
+2022-08-20 14:47:18.892  WARN [,c9e2993111894dc0,c9e2993111894dc0] 3216 --- [http-nio-9085-exec-4] .w.s.m.a.ResponseStatusExceptionResolver : Resolved [com.cognizant.exception.ResourceNotFoundException: Token can't be generated]
+2022-08-20 14:47:18.979  INFO [,ea6dfdcac93bb2c3,ea6dfdcac93bb2c3] 3216 --- [http-nio-9085-exec-3] c.c.controller.PensionController         : STARTED - doLogin
+2022-08-20 14:47:19.006 ERROR [,ea6dfdcac93bb2c3,ea6dfdcac93bb2c3] 3216 --- [http-nio-9085-exec-3] c.c.controller.PensionController         : EXCEPTION - doLogin
+2022-08-20 14:47:19.008  WARN [,ea6dfdcac93bb2c3,ea6dfdcac93bb2c3] 3216 --- [http-nio-9085-exec-3] .w.s.m.a.ResponseStatusExceptionResolver : Resolved [com.cognizant.exception.ResourceNotFoundException: Token can't be generated]
+2022-08-20 14:47:30.670  INFO [,f935fb8c192fc63a,f935fb8c192fc63a] 3216 --- [http-nio-9085-exec-5] c.c.controller.PensionController         : STARTED - doLogin
+2022-08-20 14:47:30.716 ERROR [,f935fb8c192fc63a,f935fb8c192fc63a] 3216 --- [http-nio-9085-exec-5] c.c.controller.PensionController         : EXCEPTION - doLogin
+2022-08-20 14:47:30.718  WARN [,f935fb8c192fc63a,f935fb8c192fc63a] 3216 --- [http-nio-9085-exec-5] .w.s.m.a.ResponseStatusExceptionResolver : Resolved [com.cognizant.exception.ResourceNotFoundException: Token can't be generated]
+2022-08-20 14:47:30.860  INFO [,a06f781fde44e5c2,a06f781fde44e5c2] 3216 --- [http-nio-9085-exec-6] c.c.controller.PensionController         : STARTED - doLogin
+2022-08-20 14:47:30.906 ERROR [,a06f781fde44e5c2,a06f781fde44e5c2] 3216 --- [http-nio-9085-exec-6] c.c.controller.PensionController         : EXCEPTION - doLogin
+2022-08-20 14:47:30.909  WARN [,a06f781fde44e5c2,a06f781fde44e5c2] 3216 --- [http-nio-9085-exec-6] .w.s.m.a.ResponseStatusExceptionResolver : Resolved [com.cognizant.exception.ResourceNotFoundException: Token can't be generated]
+2022-08-20 14:48:24.011  INFO [,9faece02b956e839,9faece02b956e839] 3216 --- [http-nio-9085-exec-7] c.c.controller.PensionController         : STARTED - doLogin
+2022-08-20 14:48:24.046  INFO [,9faece02b956e839,9faece02b956e839] 3216 --- [http-nio-9085-exec-7] c.c.controller.PensionController         : GENERATED - Token - eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJJZnRhayIsImV4cCI6MTY2MTAyMzEwNCwiaWF0IjoxNjYwOTg3MTA0fQ.vnwfNUCkmJrKdjidqRONoFPscPjuYeQKOz4cfKryv5o
+2022-08-20 14:48:24.048  INFO [,9faece02b956e839,9faece02b956e839] 3216 --- [http-nio-9085-exec-7] c.c.controller.PensionController         : END - doLogin
+2022-08-20 14:48:24.191  INFO [,01d2142f5931a975,01d2142f5931a975] 3216 --- [http-nio-9085-exec-9] c.c.controller.PensionController         : STARTED - allDetail
+2022-08-20 14:48:24.351  INFO [,01d2142f5931a975,01d2142f5931a975] 3216 --- [http-nio-9085-exec-9] c.c.controller.PensionController         : END - allDetail
+2022-08-20 14:48:58.106  INFO [,40d8ee01739e7d6b,40d8ee01739e7d6b] 3216 --- [http-nio-9085-exec-10] c.c.controller.PensionController         : STARTED - getPensionDetail
+2022-08-20 14:48:58.196  INFO [,40d8ee01739e7d6b,40d8ee01739e7d6b] 3216 --- [http-nio-9085-exec-10] c.c.controller.PensionController         : END - getPensionDetail
+2022-08-20 14:49:02.736  INFO [,5219ec7fd947e53d,5219ec7fd947e53d] 3216 --- [http-nio-9085-exec-1] c.c.controller.PensionController         : STARTED - getPensionDetail
+2022-08-20 14:49:02.845  WARN [,5219ec7fd947e53d,5219ec7fd947e53d] 3216 --- [http-nio-9085-exec-1] .w.s.m.a.ResponseStatusExceptionResolver : Resolved [com.cognizant.exception.ResourceNotFoundException: Pensioner details list not found]
+2022-08-20 14:49:02.926  INFO [,69bcdd5315481e58,69bcdd5315481e58] 3216 --- [http-nio-9085-exec-2] c.c.controller.PensionController         : STARTED - getPensionDetail
+2022-08-20 14:49:03.021  WARN [,69bcdd5315481e58,69bcdd5315481e58] 3216 --- [http-nio-9085-exec-2] .w.s.m.a.ResponseStatusExceptionResolver : Resolved [com.cognizant.exception.ResourceNotFoundException: Pensioner details list not found]
+2022-08-20 14:49:39.628  INFO [,6bae7cdb64ffa356,6bae7cdb64ffa356] 3216 --- [http-nio-9085-exec-4] c.c.controller.PensionController         : STARTED - getPensionDetail
+2022-08-20 14:49:39.749  WARN [,6bae7cdb64ffa356,6bae7cdb64ffa356] 3216 --- [http-nio-9085-exec-4] .w.s.m.a.ResponseStatusExceptionResolver : Resolved [com.cognizant.exception.ResourceNotFoundException: Pensioner details list not found]
+2022-08-20 14:49:39.834  INFO [,a33789d68263f725,a33789d68263f725] 3216 --- [http-nio-9085-exec-3] c.c.controller.PensionController         : STARTED - getPensionDetail
+2022-08-20 14:49:39.926  WARN [,a33789d68263f725,a33789d68263f725] 3216 --- [http-nio-9085-exec-3] .w.s.m.a.ResponseStatusExceptionResolver : Resolved [com.cognizant.exception.ResourceNotFoundException: Pensioner details list not found]
+2022-08-20 14:49:52.716  INFO [,468fa972c9bb25c2,468fa972c9bb25c2] 3216 --- [http-nio-9085-exec-5] c.c.controller.PensionController         : STARTED - getPensionDetail
+2022-08-20 14:49:52.839  WARN [,468fa972c9bb25c2,468fa972c9bb25c2] 3216 --- [http-nio-9085-exec-5] .w.s.m.a.ResponseStatusExceptionResolver : Resolved [com.cognizant.exception.ResourceNotFoundException: Pensioner details list not found]
+2022-08-20 14:49:52.957  INFO [,941bfd0334a8091d,941bfd0334a8091d] 3216 --- [http-nio-9085-exec-6] c.c.controller.PensionController         : STARTED - getPensionDetail
+2022-08-20 14:49:53.062  WARN [,941bfd0334a8091d,941bfd0334a8091d] 3216 --- [http-nio-9085-exec-6] .w.s.m.a.ResponseStatusExceptionResolver : Resolved [com.cognizant.exception.ResourceNotFoundException: Pensioner details list not found]
+2022-08-20 14:50:44.514  INFO [,a3afab5812581705,a3afab5812581705] 3216 --- [http-nio-9085-exec-7] c.c.controller.PensionController         : STARTED - getPensionDetail
+2022-08-20 14:50:44.612  WARN [,a3afab5812581705,a3afab5812581705] 3216 --- [http-nio-9085-exec-7] .w.s.m.a.ResponseStatusExceptionResolver : Resolved [com.cognizant.exception.ResourceNotFoundException: Pensioner details list not found]
+2022-08-20 14:50:44.692  INFO [,c5754f87d367c9d1,c5754f87d367c9d1] 3216 --- [http-nio-9085-exec-8] c.c.controller.PensionController         : STARTED - getPensionDetail
+2022-08-20 14:50:44.765  WARN [,c5754f87d367c9d1,c5754f87d367c9d1] 3216 --- [http-nio-9085-exec-8] .w.s.m.a.ResponseStatusExceptionResolver : Resolved [com.cognizant.exception.ResourceNotFoundException: Pensioner details list not found]
+2022-08-20 14:56:50.052  INFO [,,] 3216 --- [Thread-8] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-08-20 14:56:50.078  INFO [,,] 3216 --- [Thread-8] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2022-08-20 14:56:50.297  WARN [,,] 3216 --- [Thread-8] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-200]
+2022-08-20 14:56:50.300  INFO [,,] 3216 --- [Thread-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2022-08-20 14:56:50.308  INFO [,,] 3216 --- [Thread-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2022-08-20 14:56:52.104  INFO [,,] 3216 --- [restartedMain] c.c.PensionManagementPortalApplication   : Starting PensionManagementPortalApplication using Java 1.8.0_181 on LTIN264352 with PID 3216 (C:\Workspace\microservices\Pension-Management-Portal-Microservice\target\classes started by 889068 in C:\Workspace\microservices\Pension-Management-Portal-Microservice)
+2022-08-20 14:56:52.106  INFO [,,] 3216 --- [restartedMain] c.c.PensionManagementPortalApplication   : No active profile set, falling back to default profiles: default
+2022-08-20 14:56:55.392  INFO [,,] 3216 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-08-20 14:56:55.407  INFO [,,] 3216 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 13 ms. Found 0 JPA repository interfaces.
+2022-08-20 14:56:55.693  INFO [,,] 3216 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=b6efebc2-bb64-3a73-b714-eba9624e96b9
+2022-08-20 14:56:56.472  INFO [,,] 3216 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9085 (http)
+2022-08-20 14:56:56.475  INFO [,,] 3216 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-20 14:56:56.475  INFO [,,] 3216 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.50]
+2022-08-20 14:56:56.557  INFO [,,] 3216 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-20 14:56:56.558  INFO [,,] 3216 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4434 ms
+2022-08-20 14:56:56.654  INFO [,,] 3216 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2022-08-20 14:56:56.660  INFO [,,] 3216 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2022-08-20 14:56:56.661  INFO [,,] 3216 --- [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:1112ff13-3477-4197-b8a2-c927f5aae9c1'
+2022-08-20 14:56:57.217  INFO [,,] 3216 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-20 14:56:57.230  INFO [,,] 3216 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-08-20 14:56:57.298  INFO [,,] 3216 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-20 14:56:57.299  INFO [,,] 3216 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-08-20 14:56:57.349  WARN [,,] 3216 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2022-08-20 14:56:57.572  WARN [,,] 3216 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-08-20 14:57:01.757  INFO [,,] 3216 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9085 (http) with context path ''
+2022-08-20 14:57:02.949  INFO [,,] 3216 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2022-08-20 14:57:02.951  INFO [,,] 3216 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2022-08-20 14:57:02.961  INFO [,,] 3216 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2022-08-20 14:57:03.088  INFO [,,] 3216 --- [restartedMain] c.c.PensionManagementPortalApplication   : Started PensionManagementPortalApplication in 12.411 seconds (JVM running for 14963.088)
+2022-08-20 14:57:03.097  INFO [,,] 3216 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-08-20 14:57:03.901  INFO [,,] 3216 --- [Thread-15] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-08-20 14:57:03.904  INFO [,,] 3216 --- [Thread-15] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2022-08-20 14:57:04.117  WARN [,,] 3216 --- [Thread-15] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-200]
+2022-08-20 14:57:04.120  INFO [,,] 3216 --- [Thread-15] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2022-08-20 14:57:04.124  INFO [,,] 3216 --- [Thread-15] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2022-08-20 14:57:06.131  INFO [,,] 3216 --- [restartedMain] c.c.PensionManagementPortalApplication   : Starting PensionManagementPortalApplication using Java 1.8.0_181 on LTIN264352 with PID 3216 (C:\Workspace\microservices\Pension-Management-Portal-Microservice\target\classes started by 889068 in C:\Workspace\microservices\Pension-Management-Portal-Microservice)
+2022-08-20 14:57:06.132  INFO [,,] 3216 --- [restartedMain] c.c.PensionManagementPortalApplication   : No active profile set, falling back to default profiles: default
+2022-08-20 14:57:07.417  INFO [,,] 3216 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-08-20 14:57:07.435  INFO [,,] 3216 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 16 ms. Found 0 JPA repository interfaces.
+2022-08-20 14:57:07.666  INFO [,,] 3216 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=b6efebc2-bb64-3a73-b714-eba9624e96b9
+2022-08-20 14:57:08.087  INFO [,,] 3216 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9085 (http)
+2022-08-20 14:57:08.089  INFO [,,] 3216 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-20 14:57:08.090  INFO [,,] 3216 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.50]
+2022-08-20 14:57:08.176  INFO [,,] 3216 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-20 14:57:08.177  INFO [,,] 3216 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2036 ms
+2022-08-20 14:57:08.256  INFO [,,] 3216 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2022-08-20 14:57:08.264  INFO [,,] 3216 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2022-08-20 14:57:08.264  INFO [,,] 3216 --- [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:98a76985-4696-411f-9f6f-1a0846833242'
+2022-08-20 14:57:08.702  INFO [,,] 3216 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-20 14:57:08.716  INFO [,,] 3216 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-08-20 14:57:08.766  INFO [,,] 3216 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-20 14:57:08.767  INFO [,,] 3216 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-08-20 14:57:08.826  WARN [,,] 3216 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2022-08-20 14:57:09.009  WARN [,,] 3216 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
