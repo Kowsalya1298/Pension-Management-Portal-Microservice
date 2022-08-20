@@ -42,12 +42,12 @@ public class PensionController {
 
     // Validating login credentials and generate token if valid
 
-    @PostMapping("/token")
+    @PostMapping("/login")
     public ResponseEntity<?> doLogin(@RequestBody AuthRequest authRequest) {
 	LOGGER.info("STARTED - doLogin");
 	String token = null;
 	try {
-	    token = authorizationClient.generateToken(authRequest);
+	    token = authorizationClient.login(authRequest);
 	    LOGGER.info("GENERATED - Token - " + token.toString());
 	} catch (Exception e) {
 	    LOGGER.error("EXCEPTION - doLogin");
@@ -106,26 +106,34 @@ public class PensionController {
 
     // Get details of a pensioner using aadhar number
     @PostMapping("/pensionerDetail")
-    public ResponseEntity<PensionerDetail> getPensionDetail(@RequestHeader(name = "Authorization") String token,
+    public ResponseEntity<?> getPensionDetail(@RequestHeader(name = "Authorization") String token,
 	    @RequestBody PensionerInput pensionerInput) {
 	LOGGER.info("STARTED - getPensionDetail");
 	PensionerDetail pensionerDetail = null;
-	if (authorizationClient.authorization(token)) {
-	    try {
-		pensionerDetail = processPensionClient.getPensionerDetail(pensionerInput);
-	    } catch (Exception e) {
-		throw new ResourceNotFoundException("Pensioner details not found");
+	ResponseEntity<?> response = null;
+	if(authorizationClient.authorization(token)) {
+	    if(!pensionerInput.getAadhaarNumber().isEmpty()) {
+		try {
+		    response = new ResponseEntity<>( processPensionClient.getPensionerDetail(pensionerInput), HttpStatus.OK);
+		} catch (Exception e) {
+		    response = new ResponseEntity<>("Aadhar number not found", HttpStatus.BAD_REQUEST);
+		}
+	    }else {
+		response = new ResponseEntity<>("Enter Valid Aadhar Number", HttpStatus.BAD_REQUEST);
 	    }
-	} else {
-	    new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 	}
+	else {
+	    response = new ResponseEntity<>("Invalid Access Token", HttpStatus.UNAUTHORIZED);
+	}
+	
+	
 
 	LOGGER.info("END - getPensionDetail");
-	return new ResponseEntity<>(pensionerDetail, HttpStatus.OK);
+	return response;
+
     }
 
-    
-    //Calculate pension using aadhar number
+    // Calculate pension using aadhar number
     @PostMapping("/calculatePension")
     public ResponseEntity<PensionDetail> getPensionerDetail(@RequestHeader(name = "Authorization") String token,
 	    @RequestBody PensionerInput pensionerInput) {
@@ -137,15 +145,14 @@ public class PensionController {
 //	    LOGGER.error("EXCEPTION - getPensionDetail");
 //	    throw new ResourceNotFoundException("enter a valid token");
 //	}
-	if(authorizationClient.authorization(token)) {
+	if (authorizationClient.authorization(token)) {
 	    try {
 		pensionDetail = processPensionClient.getPensionDetail(token, pensionerInput);
+	    } catch (Exception e) {
+		LOGGER.error("EXCEPTION - getPensionDetail");
+		new ResponseEntity<>("Aadhar Number not found", HttpStatus.NOT_FOUND);
+		throw new ResourceNotFoundException("Aadhar Number not found");
 	    }
-	    catch (Exception e) {
-		    LOGGER.error("EXCEPTION - getPensionDetail");
-		    new ResponseEntity<>("Aadhar Number not found",HttpStatus.NOT_FOUND);
-		    throw new ResourceNotFoundException("Aadhar Number not found");
-		}
 	}
 //	PensionDetail pensionDetail = processPensionClient.getPensionDetail(token, pensionerInput);
 	LOGGER.info("END - getPensionDetail");

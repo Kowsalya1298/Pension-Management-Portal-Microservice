@@ -13,7 +13,7 @@ import com.cognizant.model.User;
 public interface AuthorizationClient {
 	
 	@PostMapping("/authenticate")
-	public String generateToken(@RequestBody AuthRequest authRequest) throws Exception; 
+	public String login(@RequestBody AuthRequest authRequest) throws Exception; 
 	
 	@PostMapping("/register")
 	public User register(@RequestBody User user) throws Exception; 
