@@ -34,14 +34,10 @@ public class PensionController {
     @Autowired
     private ProcessPensionClient processPensionClient;
 
-    // starting message
-    @GetMapping("/")
-    public String display() {
-	return "Pension management working";
-    }
-
-    // Validating login credentials and generate token if valid
-
+    /**
+     * @param authRequest username and password
+     * @return token if credentials are valid
+     */
     @PostMapping("/login")
     public ResponseEntity<?> doLogin(@RequestBody AuthRequest authRequest) {
 	LOGGER.info("STARTED - doLogin");
@@ -60,8 +56,10 @@ public class PensionController {
 	LOGGER.info("END - doLogin");
 	return ResponseEntity.ok(new Token(token));
     }
-
-    // Register new user
+    /**
+     * @param user username and password
+     * @return created user
+     */
     @PostMapping("/register")
     public ResponseEntity<User> registerNewUser(@RequestBody User user) {
 	LOGGER.info("STARTED - Registration");
@@ -76,9 +74,11 @@ public class PensionController {
 	LOGGER.info("END - Registration");
 	return new ResponseEntity<>(userDetails, HttpStatus.CREATED);
     }
-
-    // getting all pensioners details from pensioner details micro service
-
+    
+    /**
+     * @param token
+     * @return all pensioner details if token is valid
+     */
     @GetMapping("/details")
     public ResponseEntity<?> allDetail(@RequestHeader(name = "Authorization") String token) {
 	LOGGER.info("STARTED - allDetail");
@@ -104,7 +104,11 @@ public class PensionController {
 
     }
 
-    // Get details of a pensioner using aadhar number
+    /**
+     * @param token
+     * @param pensionerInput user given aadhar number
+     * @return pensionser detail of a given aadhar number
+     */
     @PostMapping("/pensionerDetail")
     public ResponseEntity<?> getPensionDetail(@RequestHeader(name = "Authorization") String token,
 	    @RequestBody PensionerInput pensionerInput) {
@@ -132,19 +136,16 @@ public class PensionController {
 	return response;
 
     }
-
-    // Calculate pension using aadhar number
+    /**
+     * @param token
+     * @param pensionerInput
+     * @return calculated pension details
+     */
     @PostMapping("/calculatePension")
     public ResponseEntity<PensionDetail> getPensionerDetail(@RequestHeader(name = "Authorization") String token,
 	    @RequestBody PensionerInput pensionerInput) {
 	PensionDetail pensionDetail = null;
 	LOGGER.info("STARTED - getPensionDetail");
-//	try {
-//	    authorizationClient.authorization(token);
-//	} catch (Exception e) {
-//	    LOGGER.error("EXCEPTION - getPensionDetail");
-//	    throw new ResourceNotFoundException("enter a valid token");
-//	}
 	if (authorizationClient.authorization(token)) {
 	    try {
 		pensionDetail = processPensionClient.getPensionDetail(token, pensionerInput);
@@ -154,7 +155,6 @@ public class PensionController {
 		throw new ResourceNotFoundException("Aadhar Number not found");
 	    }
 	}
-//	PensionDetail pensionDetail = processPensionClient.getPensionDetail(token, pensionerInput);
 	LOGGER.info("END - getPensionDetail");
 	return ResponseEntity.ok(pensionDetail);
 
