@@ -119,9 +119,11 @@ public class PensionController {
 	    if(!pensionerInput.getAadhaarNumber().isEmpty()) {
 		try {
 		    response = new ResponseEntity<>( processPensionClient.getPensionerDetail(pensionerInput), HttpStatus.OK);
-		} catch (Exception e) {
-		    response = new ResponseEntity<>("Aadhar number not found", HttpStatus.BAD_REQUEST);
-		}
+		}catch (Exception e) {
+			LOGGER.error("EXCEPTION - getPensionDetail");
+			new ResponseEntity<>("Aadhar Number not found", HttpStatus.NOT_FOUND);
+			throw new ResourceNotFoundException("Aadhar Number not found");
+		    }
 	    }else {
 		response = new ResponseEntity<>("Enter Valid Aadhar Number", HttpStatus.BAD_REQUEST);
 	    }
