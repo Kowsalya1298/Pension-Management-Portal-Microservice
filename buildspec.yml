@@ -38,3 +38,13 @@ phases:
        - docker push $REPOSITORY_URI:latest
 
        - docker push $REPOSITORY_URI:$IMAGE_TAG
+       
+       - printf '[{"name":"sk-pension-management-portal","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
+
+       - cat imagedefinitions.json
+
+       - echo Post build completed
+
+artifacts:
+
+  files: imagedefinitions.json
