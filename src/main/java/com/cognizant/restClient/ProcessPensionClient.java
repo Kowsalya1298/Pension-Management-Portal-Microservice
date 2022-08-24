@@ -12,7 +12,7 @@ import com.cognizant.model.PensionDetail;
 import com.cognizant.model.PensionerDetail;
 import com.cognizant.model.PensionerInput;
 
-@FeignClient(name = "ProcessPensionService", url="http://13.235.54.69:9084")
+@FeignClient(name = "ProcessPensionService", url="http://52.66.132.178:9084")
 public interface ProcessPensionClient {
 	
 	@PostMapping("/processPension")
